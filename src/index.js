@@ -50,7 +50,7 @@ function or(arr1, arr2) {
 function xor(arr1, arr2) {
     var ans = new Array(arr1.length);
     for (var i = 0; i < arr1.length; i++)
-        ans[i] = (arr1[i] | arr2[i]) & ~(arr1[i] & arr2[i]);
+        ans[i] = arr1[i] ^ arr2[i];
     return ans;
 }
 
