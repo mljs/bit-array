@@ -88,7 +88,6 @@ function setBit(arr, n, val) {
     else
         ans[index] = ~mask & ans[index];
     return ans;
-   // ((Math.pow(2, n) * val) | (~Math.pow(2, n) & arr[0]));
 }
 
 module.exports = {
