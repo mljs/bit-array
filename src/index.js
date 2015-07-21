@@ -88,12 +88,11 @@ function getBit(arr, n) {
 function setBit(arr, n, val) {
     var index = n >> 5; // Same as Math.floor(n/32)
     var mask = 1 << (31 - n % 32);
-    var ans = arr.concat();
     if (val)
-        ans[index] = mask | (~mask & ans[index]);
+        arr[index] = mask | (~mask & arr[index]);
     else
-        ans[index] = ~mask & ans[index];
-    return ans;
+        arr[index] = ~mask & arr[index];
+    return arr;
 }
 
 module.exports = {
