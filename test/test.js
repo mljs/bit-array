@@ -61,4 +61,13 @@ describe('Bit array test', function () {
         bitArray.count(t1).should.equal(2);
         bitArray.count(t2).should.equal(2);
     });
+
+    it('string methods', function () {
+        var aux = bitArray.toString(t1);
+        var ans = bitArray.parseString(aux);
+        ans[0].should.equal(0);
+        ans[1].should.equal(1);
+        ans[2].should.equal(0);
+        ans[3].should.equal(1);
+    });
 });

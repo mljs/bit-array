@@ -43,6 +43,14 @@ Imagine that you have an array of 4-bit numbers like this `['0001','1010']`, the
 
 The logical function to update the value is based in `(a & c) | (¬a & b)`, where `a` is a binary number that is 1 only in the `n` position and 0 otherwise, `c` is the new desired value and `b` is the original value.
 
+### toString(arr)
+
+Translate an array of numbers to a string of bits, so `[0]` will be `00000000000000000000000000000000` and so on.
+
+### parseString(str)
+
+Creates an array of number based in the boolean string, so `00000000000000000000000000000000` will be `[0]` and so on.
+
 ## Test
 
 ```shell

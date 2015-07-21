@@ -95,6 +95,34 @@ function setBit(arr, n, val) {
     return arr;
 }
 
+/**
+ * Translate an array of numbers to a string of bits
+ * @param {Array} arr
+ * @returns {string}
+ */
+function toString(arr) {
+    var str = '';
+    for (var i = 0; i < arr.length; i++) {
+        var obj = arr[i].toString(2);
+        str += '00000000000000000000000000000000'.substr(obj.length) + obj;
+    }
+    return str;
+}
+
+/**
+ * Creates an array of number based in the boolean string
+ * @param {string} str
+ * @returns {Array}
+ */
+function parseString(str) {
+    var len = str.length / 32;
+    var ans = new Array(len);
+    for (var i = 0; i < len; i++) {
+        ans[i] = parseInt(str.substr(i*32, 32), 2);
+    }
+    return ans;
+}
+
 module.exports = {
     count: count,
     and: and,
@@ -102,5 +130,7 @@ module.exports = {
     xor: xor,
     not: not,
     getBit: getBit,
-    setBit: setBit
+    setBit: setBit,
+    toString: toString,
+    parseString: parseString
 };
