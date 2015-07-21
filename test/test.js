@@ -74,6 +74,6 @@ describe('Bit array test', function () {
     it('to debug', function () {
         var aux = bitArray.toDebug(t1);
         aux[0].should.equal('0');
-        //console.log(aux);
+        console.log(aux);
     });
 });

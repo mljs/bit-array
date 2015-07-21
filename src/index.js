@@ -129,20 +129,14 @@ function parseString(str) {
  * @returns {string}
  */
 function toDebug(arr) {
+    var binary = toString(arr);
     var str = '';
     for (var i = 0; i < arr.length; i++) {
-        var line = '0000'.substr((i * 32).toString(16).length) + (i * 32).toString(16);
-        var n = [
-            '0000'.substr((arr[i] & 0xf0000000).toString(2).length) + (arr[i] & 0xf0000000).toString(2),
-            '0000'.substr((arr[i] & 0xf000000).toString(2).length) + (arr[i] & 0xf000000).toString(2),
-            '0000'.substr((arr[i] & 0xf00000).toString(2).length) + (arr[i] & 0xf00000).toString(2),
-            '0000'.substr((arr[i] & 0xf0000).toString(2).length) + (arr[i] & 0xf0000).toString(2),
-            '0000'.substr((arr[i] & 0xf000).toString(2).length) + (arr[i] & 0xf000).toString(2),
-            '0000'.substr((arr[i] & 0xf00).toString(2).length) + (arr[i] & 0xf00).toString(2),
-            '0000'.substr((arr[i] & 0xf0).toString(2).length) + (arr[i] & 0xf0).toString(2),
-            '0000'.substr((arr[i] & 0xf).toString(2).length) + (arr[i] & 0xf).toString(2)
-        ];
-        str += line + ': ' + n[0] + ' ' + n[1] + ' ' + n[2] + ' ' + n[3] + ' ' + n[4] + ' ' + n[5] + ' ' + n[6] + ' ' + n[7] + '\n';
+        str += '0000'.substr((i * 32).toString(16).length) + (i * 32).toString(16) + ':';
+        for (var j = 0; j < 32; j += 4) {
+            str += ' ' + binary.substr(i * 32 + j, 4);
+        }
+        str += '\n';
     }
     return str
 }
