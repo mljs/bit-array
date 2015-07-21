@@ -89,7 +89,7 @@ function setBit(arr, n, val) {
     var index = n >> 5; // Same as Math.floor(n/32)
     var mask = 1 << (31 - n % 32);
     if (val)
-        arr[index] = mask | (~mask & arr[index]);
+        arr[index] = mask | arr[index];
     else
         arr[index] = ~mask & arr[index];
     return arr;

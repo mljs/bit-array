@@ -2,10 +2,14 @@
 
 var bitArray = require('..');
 
-var t1 = [0,1,0,1];
-var t2 = [0,0,1,1];
+var t1, t2;
 
 describe('Bit array test', function () {
+
+    beforeEach(function () {
+        t1 = [0,1,0,1];
+        t2 = [0,0,1,1];
+    });
 
     it('AND test', function () {
         var and = bitArray.and(t1, t2);
