@@ -15,7 +15,7 @@ Bit-array operations in JavaScript
 
 ### count(arr)
 
-Calculates the sum of the amount of `1` in the numbers.
+Calculates the sum of the amount of `1` in the numbers. This is also known as [Hamming weight](https://en.wikipedia.org/wiki/Hamming_weight)
 
 ### and(arr1, arr2)
 

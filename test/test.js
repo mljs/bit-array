@@ -52,4 +52,9 @@ describe('Bit array test', function () {
         ans = bitArray.setBit(t1, 2, true);
         bitArray.getBit(ans, 2).should.be.true();
     });
+
+    it('count test', function () {
+        bitArray.count(t1).should.equal(2);
+        bitArray.count(t2).should.equal(2);
+    });
 });

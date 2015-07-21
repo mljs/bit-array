@@ -1,12 +1,18 @@
 'use strict';
 
+var eightBits = require('./creator');
+
 /**
  * Count the number of true values in an array
  * @param {Array} arr
  * @return {number}
  */
 function count(arr) {
-    // TODO
+    var c = 0;
+    for (var i = 0; i < arr.length; i++) {
+        c += eightBits[arr[i & 0xff]] + eightBits[arr[i & 0xff00]] + eightBits[arr[i & 0xff0000]] + eightBits[arr[i & 0xff000000]];
+    }
+    return c;
 }
 
 /**
