@@ -51,6 +51,16 @@ Translate an array of numbers to a string of bits, so `[0]` will be `00000000000
 
 Creates an array of number based in the boolean string, so `00000000000000000000000000000000` will be `[0]` and so on.
 
+### toDebug(arr)
+
+Creates a human readable string of the array in the format:
+
+```shell
+0000: 0000 1000 1111 1000 0011 1101 1111 0001
+0020: 0000 1000 1111 1000 0011 1101 1111 0001
+0040: 0000 1000 1111 1000 0011 1101 1111 0001
+```
+
 ## Test
 
 ```shell

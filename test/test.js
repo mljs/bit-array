@@ -70,4 +70,10 @@ describe('Bit array test', function () {
         ans[2].should.equal(0);
         ans[3].should.equal(1);
     });
+
+    it('to debug', function () {
+        var aux = bitArray.toDebug(t1);
+        aux[0].should.equal('0');
+        //console.log(aux);
+    });
 });
