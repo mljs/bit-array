@@ -63,7 +63,8 @@ The length of the string will be `arr.length * 8`.
 
 ### parseHexString(str)
 
-Converts a hexadecimal representation of bits to an array, so `parseHexString('00000010ffff0000')` will return `[16, -65536]`.
+Converts a hexadecimal representation of bits to an array, so `parseHexString('00000010ffff0000')` will return `[16, -65536]`.  
+This is the exact inverse of `toHexString`.
 
 ### toDebug(arr)
 
