@@ -96,11 +96,11 @@ function setBit(arr, n, val) {
 }
 
 /**
- * Translate an array of numbers to a string of bits
+ * Translates an array of numbers to a string of bits
  * @param {Array} arr
  * @returns {string}
  */
-function toString(arr) {
+function toBinaryString(arr) {
     var str = '';
     for (var i = 0; i < arr.length; i++) {
         var obj = (arr[i] >>> 0).toString(2);
@@ -110,15 +110,15 @@ function toString(arr) {
 }
 
 /**
- * Creates an array of number based in the boolean string
+ * Creates an array of numbers based on a string of bits
  * @param {string} str
  * @returns {Array}
  */
-function parseString(str) {
+function parseBinaryString(str) {
     var len = str.length / 32;
     var ans = new Array(len);
     for (var i = 0; i < len; i++) {
-        ans[i] = parseInt(str.substr(i*32, 32), 2);
+        ans[i] = parseInt(str.substr(i*32, 32), 2) | 0;
     }
     return ans;
 }
@@ -129,14 +129,14 @@ function parseString(str) {
  * @returns {string}
  */
 function toDebug(arr) {
-    var binary = toString(arr);
+    var binary = toBinaryString(arr);
     var str = '';
     for (var i = 0; i < arr.length; i++) {
         str += '0000'.substr((i * 32).toString(16).length) + (i * 32).toString(16) + ':';
         for (var j = 0; j < 32; j += 4) {
             str += ' ' + binary.substr(i * 32 + j, 4);
         }
-        str += '\n';
+        if (i < arr.length - 1) str += '\n';
     }
     return str
 }
@@ -149,7 +149,7 @@ module.exports = {
     not: not,
     getBit: getBit,
     setBit: setBit,
-    toString: toString,
-    parseString: parseString,
+    toBinaryString: toBinaryString,
+    parseBinaryString: parseBinaryString,
     toDebug: toDebug
 };

@@ -7,8 +7,8 @@ var t1, t2;
 describe('Bit array test', function () {
 
     beforeEach(function () {
-        t1 = [0,1,0,1];
-        t2 = [0,0,1,1];
+        t1 = [0, 1, 0, 1];
+        t2 = [0, 0, 1, 1];
     });
 
     it('AND test', function () {
@@ -63,19 +63,24 @@ describe('Bit array test', function () {
         bitArray.count(t2).should.equal(2);
     });
 
-    it('string methods', function () {
-        var aux = bitArray.toString(t1);
-        var ans = bitArray.parseString(aux);
-        ans[0].should.equal(0);
-        ans[1].should.equal(1);
-        ans[2].should.equal(0);
-        ans[3].should.equal(1);
-        bitArray.toString([-1]).should.equal('11111111111111111111111111111111');
+    describe('string methods', function () {
+        it('binary', function () {
+            var aux = bitArray.toBinaryString(t1);
+            var ans = bitArray.parseBinaryString(aux);
+            ans[0].should.equal(0);
+            ans[1].should.equal(1);
+            ans[2].should.equal(0);
+            ans[3].should.equal(1);
+            bitArray.toBinaryString([-1]).should.equal('11111111111111111111111111111111');
+
+            var negativeString = bitArray.toBinaryString([-1000, -5]);
+            bitArray.parseBinaryString(negativeString).should.eql([-1000, -5])
+        });
     });
 
     it('to debug', function () {
         var aux = bitArray.toDebug(t1);
-        aux[0].should.equal('0');
-        console.log(aux);
+        var expected = '0000: 0000 0000 0000 0000 0000 0000 0000 0000\n0020: 0000 0000 0000 0000 0000 0000 0000 0001\n0040: 0000 0000 0000 0000 0000 0000 0000 0000\n0060: 0000 0000 0000 0000 0000 0000 0000 0001';
+        aux.should.equal(expected);
     });
 });
