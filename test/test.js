@@ -70,6 +70,7 @@ describe('Bit array test', function () {
         ans[1].should.equal(1);
         ans[2].should.equal(0);
         ans[3].should.equal(1);
+        bitArray.toString([-1]).should.equal('11111111111111111111111111111111');
     });
 
     it('to debug', function () {

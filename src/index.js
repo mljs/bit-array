@@ -103,7 +103,7 @@ function setBit(arr, n, val) {
 function toString(arr) {
     var str = '';
     for (var i = 0; i < arr.length; i++) {
-        var obj = arr[i].toString(2);
+        var obj = (arr[i] >>> 0).toString(2);
         str += '00000000000000000000000000000000'.substr(obj.length) + obj;
     }
     return str;
