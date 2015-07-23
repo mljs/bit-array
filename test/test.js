@@ -76,6 +76,19 @@ describe('Bit array test', function () {
             var negativeString = bitArray.toBinaryString([-1000, -5]);
             bitArray.parseBinaryString(negativeString).should.eql([-1000, -5])
         });
+
+        it('hex', function () {
+            var aux = bitArray.toHexString(t1);
+            var ans = bitArray.parseHexString(aux);
+            ans[0].should.equal(0);
+            ans[1].should.equal(1);
+            ans[2].should.equal(0);
+            ans[3].should.equal(1);
+            bitArray.toHexString([-1]).should.equal('ffffffff');
+
+            var negativeString = bitArray.toHexString([-1000, -5]);
+            bitArray.parseHexString(negativeString).should.eql([-1000, -5])
+        });
     });
 
     it('to debug', function () {

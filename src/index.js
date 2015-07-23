@@ -124,6 +124,34 @@ function parseBinaryString(str) {
 }
 
 /**
+ * Translates an array of numbers to a hex string
+ * @param {Array} arr
+ * @returns {string}
+ */
+function toHexString(arr) {
+    var str = '';
+    for (var i = 0; i < arr.length; i++) {
+        var obj = (arr[i] >>> 0).toString(16);
+        str += '00000000'.substr(obj.length) + obj;
+    }
+    return str;
+}
+
+/**
+ * Creates an array of numbers based on a hex string
+ * @param {string} str
+ * @returns {Array}
+ */
+function parseHexString(str) {
+    var len = str.length / 8;
+    var ans = new Array(len);
+    for (var i = 0; i < len; i++) {
+        ans[i] = parseInt(str.substr(i*8, 8), 16) | 0;
+    }
+    return ans;
+}
+
+/**
  * Creates a human readable string of the array
  * @param {Array} arr
  * @returns {string}
@@ -151,5 +179,7 @@ module.exports = {
     setBit: setBit,
     toBinaryString: toBinaryString,
     parseBinaryString: parseBinaryString,
+    toHexString: toHexString,
+    parseHexString: parseHexString,
     toDebug: toDebug
 };
