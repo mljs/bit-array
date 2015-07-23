@@ -10,7 +10,7 @@ var eightBits = require('./creator');
 function count(arr) {
     var c = 0;
     for (var i = 0; i < arr.length; i++) {
-        c += eightBits[arr[i & 0xff]] + eightBits[arr[i & 0xff00]] + eightBits[arr[i & 0xff0000]] + eightBits[arr[i & 0xff000000]];
+        c += eightBits[arr[i] & 0xff] + eightBits[arr[i] & 0xff00] + eightBits[arr[i] & 0xff0000] + eightBits[arr[i] & 0xff000000];
     }
     return c;
 }

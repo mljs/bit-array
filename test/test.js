@@ -58,6 +58,7 @@ describe('Bit array test', function () {
     });
 
     it('count test', function () {
+        bitArray.count([1]).should.equal(1);
         bitArray.count(t1).should.equal(2);
         bitArray.count(t2).should.equal(2);
     });
