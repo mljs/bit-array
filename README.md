@@ -2,10 +2,9 @@
 
   [![NPM version][npm-image]][npm-url]
   [![build status][travis-image]][travis-url]
-  [![David deps][david-image]][david-url]
   [![npm download][download-image]][download-url]
 
-Bit-array operations in JavaScript
+Bit-array operations in JavaScript.
 
 ## Installation
 
@@ -13,47 +12,62 @@ Bit-array operations in JavaScript
 
 ## Methods
 
+All exported methods are static and do not change the original array unless indicated otherwise.  
+Numbers in array arguments are treated as 32-bit signed integers.  
+The library is designed with speed in mind so argument type and length are not checked.
+
 ### count(arr)
 
-Calculates the sum of the amount of `1` in the numbers. This is also known as [Hamming weight](https://en.wikipedia.org/wiki/Hamming_weight)
+Computes the amount of `1`s in the array. This is also known as [Hamming weight](https://en.wikipedia.org/wiki/Hamming_weight).
 
 ### and(arr1, arr2)
 
-Calculates the logical [AND](https://en.wikipedia.org/wiki/Logical_conjunction) operation using the numbers in the arrays as 32-bits binaries. The arrays needs to have the same length
+Computes the logical [AND](https://en.wikipedia.org/wiki/Logical_conjunction) operation and returns the result in a new array.
 
 ### or(arr1, arr2)
 
-Calculates the logical [OR](https://en.wikipedia.org/wiki/Logical_disjunction) operation using the numbers in the arrays as 32-bits binaries. The arrays needs to have the same length
+Computes the logical [OR](https://en.wikipedia.org/wiki/Logical_disjunction) operation and returns the result in a new array.
 
 ### xor(arr1, arr2)
 
-Calculates the logical [XOR](https://en.wikipedia.org/wiki/Logical_biconditional) operation using the numbers in the arrays as 32-bits binaries. The arrays needs to have the same length
+Computes the logical [XOR](https://en.wikipedia.org/wiki/Logical_biconditional) operation and returns the result in a new array.
 
 ### not(arr)
 
-Calculates the logical [NOT](https://en.wikipedia.org/wiki/Negation) operation using the numbers in the array as 32-bits binaries. Don't forget that will be interpreted as a signed integer.
+Computes the logical [NOT](https://en.wikipedia.org/wiki/Negation) operation and returns the result in a new array.
 
 ### getBit(arr, n)
 
-Imagine that you have an array of 4-bit numbers like this `['0001','1010']`, the 0th position will be `0` because is the most significant bit of the 0th element of the array, and the 4th position will be `1`, because will be the most significant bit in the 1st element of the array (remember that the real number of bits for a number in this case is 32).
+Returns `true` if the bit at position `n` is 1, `false` if it is 0.
+
+Imagine that you have an array of 4-bit numbers like this `['0001', '1010']`, the 0th position will be `0` because it is the most significant bit of the 0th element of the array, and the 4th position will be `1`, because will be the most significant bit in the 1st element of the array (remember that the true number of bits for a number in this case is 32).
 
 ### setBit(arr, n, val)
 
-Imagine that you have an array of 4-bit numbers like this `['0001','1010']`, the 0th position will be `0` because is the most significant bit of the 0th element of the array, and the 4th position will be `1`, because will be the most significant bit in the 1st element of the array (remember that the real number of bits for a number in this case is 32).
+Sets the bit at position `n` to 1 if `val` is a [truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy) value, otherwise sets it to 0.
 
-The logical function to update the value is based in `(a & c) | (¬a & b)`, where `a` is a binary number that is 1 only in the `n` position and 0 otherwise, `c` is the new desired value and `b` is the original value.
+### toBinaryString(arr)
 
-### toString(arr)
+Converts an array of numbers to a string representation of the bits, so `toBinaryString([1])` will return `'00000000000000000000000000000001'`.  
+The length of the string will be `arr.length * 32`.
 
-Translate an array of numbers to a string of bits, so `[0]` will be `00000000000000000000000000000000` and so on.
+### parseBinaryString(str)
 
-### parseString(str)
+Converts a string representation of bits to an array, so `parseBinaryString('00000000000000000000000000000010')` will return `[2]`.  
+This is the exact inverse of `toBinaryString`.
 
-Creates an array of number based in the boolean string, so `00000000000000000000000000000000` will be `[0]` and so on.
+### toHexString(arr)
+
+Converts an array of numbers to a hexadecimal representation of the bits, so `toHexString([-1])` will return `'ffffffff'`.  
+The length of the string will be `arr.length * 8`.
+
+### parseHexString(str)
+
+Converts a hexadecimal representation of bits to an array, so `parseHexString('00000010ffff0000')` will return `[16, -65536]`.
 
 ### toDebug(arr)
 
-Creates a human readable string of the array in the format:
+Returns a human-readable string from the array in the format:
 
 ```shell
 0000: 0000 1000 1111 1000 0011 1101 1111 0001
@@ -61,16 +75,10 @@ Creates a human readable string of the array in the format:
 0040: 0000 1000 1111 1000 0011 1101 1111 0001
 ```
 
-## Test
-
-```shell
-$ npm install
-$ npm test
-```
-
 ## Authors
 
   - [Miguel Asencio](https://github.com/maasencioh)
+  - [Michaël Zasso](https://github.com/targos)
 
 ## License
 
@@ -80,7 +88,5 @@ $ npm test
 [npm-url]: https://npmjs.org/package/ml-bit-array
 [travis-image]: https://img.shields.io/travis/mljs/bit-array/master.svg?style=flat-square
 [travis-url]: https://travis-ci.org/mljs/bit-array
-[david-image]: https://img.shields.io/david/mljs/bit-array.svg?style=flat-square
-[david-url]: https://david-dm.org/mljs/bit-array
 [download-image]: https://img.shields.io/npm/dm/ml-bit-array.svg?style=flat-square
 [download-url]: https://npmjs.org/package/ml-bit-array
