@@ -32,7 +32,7 @@
   "homepage": "https://github.com/mljs/bit-array",
   "devDependencies": {
     "mocha": "^2.2.5",
-    "mocha-better-spec-reporter": "^2.1.1",
+    "mocha-better-spec-reporter": "^3.0.0",
     "should": "^7.0.2"
   }
 }
